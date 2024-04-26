@@ -1,8 +1,67 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import useAuth from "../customHooks/useAuth";
+import Swal from "sweetalert2";
 const Login = () => {
+	const {passwordLogin, googleLogin, githubLogin} = useAuth()
+	const navigate = useNavigate()
+	// password Login
+	const handlePasswordLogin = (e)=>{
+		e.preventDefault()
+		const form =e.target
+		const email = form.email.value
+		const password = form.password.value
+		passwordLogin(email, password)
+		.then(() => {
+			Swal.fire({
+				title: 'Successful',
+				text: 'Log In successful',
+				icon: 'success',
+				confirmButtonText: 'OK'
+			})
+			navigate('/')
+			
+		}).catch((err) => {
+			Swal.fire({
+				title: 'error',
+				text: 'Wrong Email or password',
+				icon: 'error',
+				confirmButtonText: 'OK'
+			})
+			console.log(err.message)
+		});
+	}
+
+	// google Login
+	const handleGoogleLogin=()=>{
+		googleLogin()
+		.then(() => {
+			Swal.fire({
+				title: 'Successful',
+				text: 'Log In successful',
+				icon: 'success',
+				confirmButtonText: 'OK'
+			})
+			navigate('/')
+			
+		})
+	}
+
+	// github Login 
+	const handleGithubLogin = ()=>{
+		githubLogin()
+		.then(()=>{
+			Swal.fire({
+				title: 'Successful',
+				text: 'Log In successful',
+				icon: 'success',
+				confirmButtonText: 'OK'
+			})
+			navigate('/')
+		})
+	}
     return (
         <div className="max-w-max mx-auto">
            <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8  ">
@@ -11,15 +70,15 @@ const Login = () => {
 		<Link to={'/register'}  rel="noopener noreferrer" className="text-orange-800 ml-2 hove:underline hover:underline">Sign up here</Link>
 	</p>
 	<div className="my-6 space-y-4 ">
-		<button  type="button" className="flex group items-center justify-center w-full p-4 space-x-4 border-[1px] border-solid border-gray-500  rounded-md   ">
-        <FaGoogle className="text-orange-700 group-hover:text-orange-500 duration-300 text-2xl" />
+		<button onClick={handleGoogleLogin}  type="button" className="flex group items-center justify-center w-full p-4 space-x-4 border-[1px] border-solid border-gray-500  rounded-md   ">
+        <FaGoogle  className="text-orange-700 group-hover:text-orange-500 duration-300 text-2xl" />
 			<p>Login with Google</p>
 		</button>
 		<button  type="button" className="flex group items-center justify-center w-full p-4 space-x-4 border-[1px] border-solid border-gray-500  rounded-md  ">
         <FaFacebookF className="text-orange-700 group-hover:text-orange-500 duration-300 text-2xl" />
 			<p>Login with Facebook</p>
 		</button>
-		<button  type="button" className="flex group items-center justify-center w-full p-4 space-x-4 border-[1px] border-solid border-gray-500  rounded-md  ">
+		<button onClick={handleGithubLogin}  type="button" className="flex group items-center justify-center w-full p-4 space-x-4 border-[1px] border-solid border-gray-500  rounded-md  ">
         <FaGithub className="text-orange-700 group-hover:text-orange-500 duration-300 text-2xl"/>
 			<p>Login with Google</p>
 		</button>
@@ -30,7 +89,7 @@ const Login = () => {
 		<p className="px-3 text-gray-400 dark:text-gray-600">OR</p>
 		<hr  className="w-full text-gray-400 dark:text-gray-600" />
 	</div>
-	<form noValidate="" action="" className="space-y-8">
+	<form onSubmit={handlePasswordLogin} className="space-y-8">
 		<div className="space-y-4">
 			<div className="space-y-2">
 				<label htmlFor="email" className="block text-sm">Email address</label>

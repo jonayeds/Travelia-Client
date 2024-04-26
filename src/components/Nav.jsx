@@ -1,12 +1,30 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../customHooks/useAuth";
+import Swal from "sweetalert2";
+import { Tooltip } from 'react-tooltip'
 const Nav = () => {
+  const{ logOut, auth} = useAuth()
+  const user = auth.currentUser
+  const navigate = useNavigate()
+  const handleLogOut =()=>{
+    logOut()
+    .then(()=>{
+      Swal.fire({
+				title: 'Successful',
+				text: 'Log Out successful',
+				icon: 'success',
+				confirmButtonText: 'OK'
+			})
+			navigate('/')
+      
+    })
+  }
     const navigation =  <>
     
-        <NavLink  to={'/'}><li><a>Home</a></li></NavLink>
-        <NavLink  to={'/allSpots'}><li><a>All Tourists Spots</a></li></NavLink>
-        <NavLink  to={'/myList'}><li><a>My List</a></li></NavLink>
+        <NavLink className={({isActive})=> isActive? 'text-orange-600 hover:scale-125 duration-200 ': 'hover:scale-125 duration-200'} to={'/'}><li><a>Home</a></li></NavLink>
+        <NavLink className={({isActive})=> isActive? 'text-orange-600 hover:scale-125 duration-200 ': 'hover:scale-125 duration-200'}  to={'/allSpots'}><li><a>All Tourists Spots</a></li></NavLink>
+        <NavLink className={({isActive})=> isActive? 'text-orange-600 hover:scale-125 duration-200 ': 'hover:scale-125 duration-200'} to={'/myList'}><li><a>My List</a></li></NavLink>
       
     </> 
     const [theme, setTheme] = useState('light')
@@ -16,7 +34,7 @@ const Nav = () => {
         }else{
             setTheme('light')
         }
-        console.log(theme)
+        
     }
     useEffect(()=>{
         localStorage.setItem('theme', theme)
@@ -24,8 +42,8 @@ const Nav = () => {
         document.querySelector('html').setAttribute('data-theme', localTheme)
     },[theme])
     return (
-        <div>
-            <div className="navbar bg-base-100">
+        <div className="max-w-7xl mx-auto w-full">
+            <div className="navbar  ">
   <div className="navbar-start ">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -37,10 +55,10 @@ const Nav = () => {
         }
       </ul>
     </div>
-    <a className=" text-2xl logo font-semibold hover:text-orange-400 group text-orange-700 duration-500">Travel<span className="text-orange-400 text-4xl  group-hover:text-orange-700 duration-500">i</span>a</a>
+    <a className=" cursor-default text-4xl logo font-semibold hover:text-orange-400 group text-orange-700 duration-500">Travel<span className="text-orange-400 text-4xl  group-hover:text-orange-700 duration-500">i</span>a</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
+    <ul className="flex gap-9 px-1 fontse">
       {
         navigation
       }
@@ -60,11 +78,31 @@ const Nav = () => {
   
 </label>
     <div className="mx-4 flex items-center  gap-2">
-        <Link to={'/login'} className="font-semibold hover:text-orange-500 duration-300">Login</Link>
+        {
+          user  ? <div className="flex  items-center">
+         <a
+  data-tooltip-id="my-tooltip"
+  data-tooltip-content={user.displayName}
+  data-tooltip-place="top"
+  
+>
+<Tooltip id="my-tooltip"   style={{ backgroundColor: "#fed6ab", color: "#a85400" }} className="font-bold" />
+<img src={user.photoURL} alt="" className="w-12 h-12 rounded-full border-green-500 border-[3px] border-solid" />
+</a>
+
+          <Link onClick={handleLogOut} className="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2  active:shadow-none shadow-xl  bg-gradient-to-tr from-orange-300 to-orange-200  border-orange-700  text-orange-700 overflow-hidden">
+        <span className="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-32 group-hover:h-32 opacity-30"></span>
+        <span className="relative">Log Out</span>
+        </Link>
+        </div> : <div>
+            <Link to={'/login'} className="font-semibold hover:text-orange-500 duration-300">Login</Link>
         <Link to={'/register'} className="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2  active:shadow-none shadow-xl  bg-gradient-to-tr from-orange-300 to-orange-200  border-orange-700  text-orange-700 overflow-hidden">
 <span className="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-32 group-hover:h-32 opacity-30"></span>
 <span className="relative">Register</span>
 </Link>
+          </div>
+        }
+
     </div>
   </div>
 </div>
