@@ -60,7 +60,7 @@ const Register = () => {
 
 	}
     return (
-        <div className="w-1/3 mx-auto">
+        <div className="w-1/3 mx-auto pt-32">
             <form onSubmit={handleRegister} className="space-y-8">
                 <div>
                     <h1 className="text-center text-3xl text-orange-700 font-semibold">Register</h1>

@@ -5,7 +5,7 @@ import { FaGithub } from "react-icons/fa";
 import useAuth from "../customHooks/useAuth";
 import Swal from "sweetalert2";
 const Login = () => {
-	const {passwordLogin, googleLogin, githubLogin} = useAuth()
+	const {passwordLogin, googleLogin, githubLogin } = useAuth()
 	const navigate = useNavigate()
 	// password Login
 	const handlePasswordLogin = (e)=>{
@@ -63,7 +63,7 @@ const Login = () => {
 		})
 	}
     return (
-        <div className="max-w-max mx-auto">
+        <div className="max-w-max mx-auto pt-32">
            <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8  ">
 	<h2 className="mb-3 text-3xl font-semibold text-center text-orange-800">Login to your account</h2>
 	<p className="text-sm text-center text-gray-500 ">Dont have account?

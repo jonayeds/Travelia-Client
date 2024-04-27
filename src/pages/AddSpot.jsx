@@ -1,6 +1,12 @@
+import useAuth from "../customHooks/useAuth";
 
 
 const AddSpot = () => {
+    const {auth} = useAuth()
+    const user = auth.currentUser
+    const email = user?.email
+    const displayName = user?.displayName
+    
     const handleAddSpot = e=>{
         e.preventDefault()
         const form = e.target
@@ -13,7 +19,7 @@ const AddSpot = () => {
         const photo = form.photo.value
         const time = form.time.value
         const visitors = form.visitors.value
-        const newSpot = {name, countryName, location, cost, seasonality, details, photo, time, visitors}
+        const newSpot = {name, countryName, location, cost, seasonality, details, photo, time, visitors, email, displayName}
         console.log(newSpot)
         fetch('http://localhost:5000/spots', {
             method: 'POST',
@@ -38,39 +44,39 @@ const AddSpot = () => {
 			<div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 ">
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Tourist Spot Name</label>
-					<input  name="name" type="text" placeholder="Enter Spot name" className="w-full p-2 rounded-md  d" />
+					<input  name="name" type="text" placeholder="Enter Spot name" className="w-full p-2 rounded-md  border" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Country Name</label>
-					<input name="countryName" type="text" placeholder="Enter Country Name" className="w-full p-2 rounded-md focus:ring focus:ring-opacity-7 5 " />
+					<input name="countryName" type="text" placeholder="Enter Country Name" className="w-full p-2 rounded-md   border " />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label className="text-sm">Location</label>
-					<input  name="location" type="text" placeholder="Enter Location" className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 " />
+					<input  name="location" type="text" placeholder="Enter Location" className="w-full p-2 rounded-md   border" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Average Cost</label>
-					<input  name="cost" type="number" placeholder="Enter Average Cost" className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 " />
+					<input  name="cost" type="number" placeholder="Enter Average Cost" className="w-full p-2 rounded-md   border" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Seasonality</label>
-					<input  name="seasonality" type="text" placeholder="Enter Seasonality" className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 " />
+					<input  name="seasonality" type="text" placeholder="Enter Seasonality" className="w-full p-2 rounded-md   border " />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Short Description</label>
-					<input  name="details" type="text" placeholder="Enter Spot Details" className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 " />
+					<input  name="details" type="text" placeholder="Enter Spot Details" className="w-full p-2 rounded-md   border" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Photo</label>
-					<input  name="photo" type="text" placeholder="Enter Photo URL" className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 " />
+					<input  name="photo" type="text" placeholder="Enter Photo URL" className="w-full p-2 rounded-md   border" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Travel Time</label>
-					<input  name="time" type="number" placeholder="Enter Travel Time" className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 " />
+					<input  name="time" type="number" placeholder="Enter Travel Time" className="w-full p-2 rounded-md   border" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Visitors Per year</label>
-					<input  name="visitors" type="number" placeholder="Visitors Count" className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 " />
+					<input  name="visitors" type="number" placeholder="Visitors Count" className="w-full p-2 rounded-md   border" />
 				</div>
 				
 				

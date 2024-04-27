@@ -5,23 +5,28 @@ import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword,
  export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
     console.log(user)
     // create user
     const createUser = (email, password)=>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email,  password)
     }
     // password Login'
     const passwordLogin = (email, password)=>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
     // google login
     const googleProvider = new GoogleAuthProvider()
     const googleLogin = ()=>{
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
     // github Login
 	const githubProvider = new GithubAuthProvider()
 	const githubLogin = ()=>{
+        setLoading(true)
 		return signInWithPopup(auth, githubProvider)
 	}
     // log Out
@@ -34,6 +39,7 @@ const AuthProvider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, (user)=>{
             if(user){
                 setUser(user)
+                setLoading(false)
             }
             return unsubscribe()
         })}, [])
@@ -46,6 +52,8 @@ const AuthProvider = ({children}) => {
         githubLogin,
         user,
         logOut,
+        loading,
+        setLoading,
     }
     return (
         <AuthContext.Provider value={authInfo}>
