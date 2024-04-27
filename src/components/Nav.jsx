@@ -25,6 +25,7 @@ const Nav = () => {
         <NavLink className={({isActive})=> isActive? 'text-orange-600 hover:scale-125 duration-200 ': 'hover:scale-125 duration-200'} to={'/'}><li><a>Home</a></li></NavLink>
         <NavLink className={({isActive})=> isActive? 'text-orange-600 hover:scale-125 duration-200 ': 'hover:scale-125 duration-200'}  to={'/allSpots'}><li><a>All Tourists Spots</a></li></NavLink>
         <NavLink className={({isActive})=> isActive? 'text-orange-600 hover:scale-125 duration-200 ': 'hover:scale-125 duration-200'} to={'/myList'}><li><a>My List</a></li></NavLink>
+        <NavLink className={({isActive})=> isActive? 'text-orange-600 hover:scale-125 duration-200 ': 'hover:scale-125 duration-200'} to={'/addSpot'}><li><a>Add Tourist Spot</a></li></NavLink>
       
     </> 
     const [theme, setTheme] = useState('light')
@@ -42,8 +43,8 @@ const Nav = () => {
         document.querySelector('html').setAttribute('data-theme', localTheme)
     },[theme])
     return (
-        <div className="max-w-7xl mx-auto w-full">
-            <div className="navbar  ">
+        <div className="max-w-7xl mx-auto w-full  ">
+            <div className={`navbar ${theme === 'dark'? 'text-white': 'text-black'}`}>
   <div className="navbar-start ">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

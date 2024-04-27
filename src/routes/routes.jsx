@@ -28,7 +28,8 @@ import AddSpot from "../pages/AddSpot";
         },
         {
             path: '/allSpots',
-            element:<AllSpots></AllSpots>
+            element:<AllSpots></AllSpots>,
+            loader: ()=> fetch('http://localhost:5000/spots')
         },
         {
             path: '/myList',
