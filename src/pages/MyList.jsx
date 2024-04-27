@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAuth from "../customHooks/useAuth";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const MyList = () => {
@@ -20,7 +21,19 @@ const MyList = () => {
     } , [user])
 
     const  handleDelete = id=>{
-        fetch(`http://localhost:5000/spots/${id}`, {
+        Swal.fire({
+            title: 'Are You Sure?',
+            text: 'Delete this item',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+            confirmButtonColor: 'red',
+            cancelButtonText: 'Cancel',
+            
+        })
+        .then((result)=>{
+            if(result.isConfirmed){
+                fetch(`http://localhost:5000/spots/${id}`, {
         method: 'DELETE'
         })
         .then(res=> res.json())
@@ -28,6 +41,12 @@ const MyList = () => {
             console.log(data)
             setNewSpots(newSpots.filter(spot=> spot._id != id))
         })
+            }
+            
+        })
+        
+        
+        
     }
     return (
         <div className="pt-32" >
@@ -51,7 +70,7 @@ const MyList = () => {
                     <td>{spot.location}</td>
                     <td>{spot.cost}$</td>
                     
-                    <td><Link className="btn bg-orange-200 text-black hover:bg-orange-300">Update</Link></td>
+                    <td><Link to={`/update/${spot._id}`} className="btn bg-orange-200 text-black hover:bg-orange-300">Update</Link></td>
                     <td><button onClick={()=>handleDelete(spot._id)} className="btn bg-red-500 text-white hover:bg-orange-700">Delete</button></td>
                 </tr>
         )

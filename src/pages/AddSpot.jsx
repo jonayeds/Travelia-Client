@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import useAuth from "../customHooks/useAuth";
 
 
@@ -6,7 +7,6 @@ const AddSpot = () => {
     const user = auth.currentUser
     const email = user?.email
     const displayName = user?.displayName
-    
     const handleAddSpot = e=>{
         e.preventDefault()
         const form = e.target
@@ -31,6 +31,13 @@ const AddSpot = () => {
         .then(res=> res.json())
         .then(data=>{
             console.log(data)
+			Swal.fire({
+				title: 'Successful',
+				text: 'Spot Added',
+				icon: 'success',
+				confirmButtonText: 'OK'
+			})
+			form.reset()
         })
     }
     return (
@@ -44,19 +51,19 @@ const AddSpot = () => {
 			<div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 ">
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Tourist Spot Name</label>
-					<input  name="name" type="text" placeholder="Enter Spot name" className="w-full p-2 rounded-md  border" />
+					<input required  name="name" type="text" placeholder="Enter Spot name" className="w-full p-2 rounded-md  border" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Country Name</label>
-					<input name="countryName" type="text" placeholder="Enter Country Name" className="w-full p-2 rounded-md   border " />
+					<input required name="countryName" type="text" placeholder="Enter Country Name" className="w-full p-2 rounded-md   border " />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label className="text-sm">Location</label>
-					<input  name="location" type="text" placeholder="Enter Location" className="w-full p-2 rounded-md   border" />
+					<input  required name="location" type="text" placeholder="Enter Location" className="w-full p-2 rounded-md   border" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Average Cost</label>
-					<input  name="cost" type="number" placeholder="Enter Average Cost" className="w-full p-2 rounded-md   border" />
+					<input required  name="cost" type="number" placeholder="Enter Average Cost" className="w-full p-2 rounded-md   border" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Seasonality</label>
