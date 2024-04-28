@@ -6,7 +6,7 @@ import useAuth from "../customHooks/useAuth";
 import Swal from "sweetalert2";
 import toast, { Toaster } from "react-hot-toast";
 const Register = () => {
-	const {createUser} = useAuth()
+	const {createUser, update, auth} = useAuth()
 	const navigate = useNavigate()
 	const [show, setShow] = useState(false)
 	const handleShow = ()=>{
@@ -19,7 +19,6 @@ const Register = () => {
 		const email = form.email.value
 		const password = form.password.value
 		const photo = form.photo.value
-		const user = {name, email, password, photo}
 		if(password.length < 6){
             toast.error('password must be at least 6 characters')
             return
@@ -39,6 +38,8 @@ const Register = () => {
 		
 		createUser(email,  password)
 		.then((result) => {
+			update(name, photo)
+			console.log(auth.currentUser)
 			Swal.fire({
 				title: 'Successful',
 				text: 'User created successfully',

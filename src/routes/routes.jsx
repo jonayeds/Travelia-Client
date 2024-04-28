@@ -11,6 +11,7 @@ import AddSpot from "../pages/AddSpot";
 import PrivateRoute from "../PrivateRoutes/PrivateRoute";
 import Update from "../pages/Update";
 import SpotDetails from "../pages/SpotDetails";
+import CountrySpots from "../pages/CountrySpots";
 
   const router = createBrowserRouter([
     {
@@ -19,7 +20,8 @@ import SpotDetails from "../pages/SpotDetails";
       children: [
         {
             path: '/',
-            element:<Home></Home>
+            element:<Home></Home>,
+            
         },
         {
             path: '/Login',
@@ -34,7 +36,7 @@ import SpotDetails from "../pages/SpotDetails";
             element:<PrivateRoute>
               <AllSpots></AllSpots>
             </PrivateRoute>,
-            loader: ()=> fetch('http://localhost:5000/spots')
+            loader: ()=> fetch("http://localhost:5000/spots")
         },
         {
             path: '/myList',
@@ -62,6 +64,13 @@ import SpotDetails from "../pages/SpotDetails";
               <SpotDetails></SpotDetails>
             </PrivateRoute>,
             loader: ({params})=> fetch(`http://localhost:5000/spots/update/${params.id}`)
+        },
+        {
+            path: '/country/:country',
+            element:<PrivateRoute>
+              <CountrySpots></CountrySpots>
+            </PrivateRoute>,
+            loader: ({params})=> fetch(`http://localhost:5000/countries/${params.country}`)
         }
       ]
     },

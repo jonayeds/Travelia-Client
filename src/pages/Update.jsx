@@ -19,7 +19,7 @@ const Update = () => {
         const visitors = form.visitors.value
         const updatedSpot = {name, countryName, location, cost, seasonality, details, photo, time, visitors }
         console.log(updatedSpot)
-        fetch(`http://localhost:5000/spots/update/${loadedSpot._id}`,{
+        fetch(`https://travelia-server-dh6ac09qh-sajjads-projects-6be26fc1.vercel.app/spots/update/${loadedSpot._id}`,{
             method: 'PUT',
             headers: {
                 "content-type" : "application/json"

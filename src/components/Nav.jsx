@@ -4,7 +4,8 @@ import useAuth from "../customHooks/useAuth";
 import Swal from "sweetalert2";
 import { Tooltip } from 'react-tooltip'
 const Nav = () => {
-  const{ logOut, auth} = useAuth()
+  const{ logOut,  auth} = useAuth()
+   
   const user = auth.currentUser
   const navigate = useNavigate()
   const handleLogOut =()=>{

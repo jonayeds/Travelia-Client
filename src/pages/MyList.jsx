@@ -14,8 +14,7 @@ const MyList = () => {
         fetch(`http://localhost:5000/spots/myList/${user?.email}`)
         .then(res=> res.json())
         .then(data => {
-            setNewSpots(data)
-            
+            setNewSpots(data)   
         })
 
     } , [user])
@@ -33,7 +32,7 @@ const MyList = () => {
         })
         .then((result)=>{
             if(result.isConfirmed){
-                fetch(`http://localhost:5000/spots/${id}`, {
+                fetch(`https://travelia-server-dh6ac09qh-sajjads-projects-6be26fc1.vercel.app/spots/${id}`, {
         method: 'DELETE'
         })
         .then(res=> res.json())
