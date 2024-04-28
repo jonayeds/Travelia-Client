@@ -1,15 +1,29 @@
+
 import { Link, useLoaderData } from "react-router-dom";
 
 const AllSpots = () => {
     const allSpots = useLoaderData()
-    console.log(allSpots)
     
+   
+    console.log(allSpots)
+    const handleSort = ()=>{
+        
+    }
     return (
         <div className="pt-32" >
             <div>
                 <h1 className="text-center heading text-5xl">All Tourist Spots</h1>
+                <div className=" w-max mx-auto my-8">
+                <div className="dropdown">
+  <div tabIndex={0} role="button" className="btn m-1 bg-orange-100">Sort By</div>
+  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+    <li onClick={handleSort}><a>Cost</a></li>
+    
+  </ul>
+</div>
+                </div>
             </div>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-10">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-12">
             {
                 allSpots.map(spot=> <div key={spot._id} className="mx-auto">
                     <div className="max-w-xs p-6 rounded-md shadow-md ">

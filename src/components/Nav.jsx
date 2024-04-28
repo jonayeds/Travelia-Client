@@ -44,7 +44,7 @@ const Nav = () => {
         document.querySelector('html').setAttribute('data-theme', localTheme)
     },[theme])
     return (
-        <div className="max-w-7xl mx-auto w-full  ">
+        <div className="max-w-7xl mx-auto w-full   ">
             <div className={`navbar ${theme === 'dark'? 'text-white': 'text-black'}`}>
   <div className="navbar-start ">
     <div className="dropdown">

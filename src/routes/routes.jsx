@@ -12,11 +12,13 @@ import PrivateRoute from "../PrivateRoutes/PrivateRoute";
 import Update from "../pages/Update";
 import SpotDetails from "../pages/SpotDetails";
 import CountrySpots from "../pages/CountrySpots";
+import Error from "../pages/Error";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout></Layout>,
+      errorElement:<Error></Error>,
       children: [
         {
             path: '/',

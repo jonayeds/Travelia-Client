@@ -12,7 +12,7 @@ const CountrySpots = () => {
             setCountrySpots(data)   
         })
 
-    } , [])
+    } , [country])
     return (
         <div className="pt-32">
             <div>
