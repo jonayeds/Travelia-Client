@@ -25,7 +25,7 @@ const Slider = () => {
             delay: 2500,
             disableOnInteraction: false,
           }}
-        className='relative  lg:h-screen  flex items-center justify-center '
+        className='relative  lg:h-screen   flex items-center justify-center '
         // install Swiper modules
         modules={[Navigation, Autoplay]}
         spaceBetween={50}
@@ -51,8 +51,8 @@ const Slider = () => {
         </div>
         
       </Swiper>
-      <div className='App absolute md:top-1/3 top-1/4 lg:left-96 left-10 z-30'>
-      <h1  className='md:text-7xl text-3xl font-bold heading text-orange-700  text-center '>
+      <div className='App lg:absolute lg:top-1/3  lg:left-96  z-30'>
+      <h1  className='lg:text-7xl text-4xl font-bold heading text-orange-700  text-center '>
       Explore the World with {' '}
         <span className='text-orange-200 '>
           {/* Style will be inherited from the parent element */}
@@ -69,7 +69,7 @@ const Slider = () => {
         </span>
       </h1>
     </div>
-        <p className='lg:text-lg text-center  lg:left-96 left-10 text-white font-mono absolute md:top-1/2 top-1/3 z-30 opacity-90 bg-black p-6 rounded-md bg-opacity-50'>
+        <p className='lg:text-lg text-center  lg:left-96 left-10 text-white font-mono lg:absolute lg:top-1/2 top-[500px] z-30 opacity-90 bg-black p-6 rounded-md bg-opacity-50'>
         Welcome to Travelia, your premier destination for all your travel needs. At Travelia, <br /> we specialize in curating unforgettable experiences tailored to your preferences, <br /> ensuring every journey is filled with excitement, discovery, and relaxation.
         </p>
         </div>

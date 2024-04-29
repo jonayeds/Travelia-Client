@@ -21,7 +21,7 @@ const Countries = () => {
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12">
            {
                 countries.map(country=> <Link to={`/country/${country.name}`} key={country._id} className="mx-auto">
-                    <div className="card hover:scale-105 duration-700 cursor-pointer w-96 h-96 bg-base-100 shadow-xl image-full ">
+                    <div className="card hover:scale-105 duration-700 cursor-pointer md:w-96 h-96 bg-base-100 shadow-xl image-full ">
   <figure><img src={country.image} alt="Shoes" className="w-full h-full" /></figure>
   <div className="card-body ">
     <h2 className="card-title text-3xl mt-20">{country.name}</h2>

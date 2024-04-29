@@ -6,9 +6,11 @@ import Footer from "../components/Footer";
 const Layout = () => {
     return (
         <div>
-            <div className="backdrop-blur-2xl bg-black bg-opacity-15 fixed z-50 w-full">  
+           <div className="h-[68px] lg:h-0">
+           <div className="backdrop-blur-2xl bg-black lg:bg-opacity-15 bg-opacity-50 fixed  h-[68px]   z-50 w-full">  
             <Nav></Nav>
             </div>
+           </div>
             <div className="min-h-screen">
             <Outlet></Outlet>
             </div>
