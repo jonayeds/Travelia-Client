@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import useAuth from "../customHooks/useAuth";
 
 
+
 const AddSpot = () => {
     const {auth} = useAuth()
     const user = auth.currentUser
@@ -40,6 +41,7 @@ const AddSpot = () => {
 			form.reset()
         })
     }
+	
     return (
         <div className="">
             <form  onSubmit={handleAddSpot}  noValidate="" action="" className="container flex flex-col mx-auto space-y-12">
@@ -49,13 +51,25 @@ const AddSpot = () => {
 				<p className="text-xs">Express where you want to visit</p>
 			</div>
 			<div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 ">
+			
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Tourist Spot Name</label>
 					<input required  name="name" type="text" placeholder="Enter Spot name" className="w-full p-2 rounded-md  border" />
 				</div>
+				{/* <div className="col-span-full sm:col-span-3">
+					<label  className="text-sm">Country Name</label>
+					<input required name="countryName" type="" placeholder="Enter Country Name" className="w-full p-2 rounded-md   border " />
+				</div> */}
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Country Name</label>
-					<input required name="countryName" type="text" placeholder="Enter Country Name" className="w-full p-2 rounded-md   border " />
+					<select name="countryName" id="cars" className="w-full p-2 rounded-md   border ">
+  <option value="Bangladesh">Bangladesh</option>
+  <option value="Indonesia">Indonesia</option>
+  <option value="Cambodia">Cambodia</option>
+  <option value="Malaysia">Malaysia</option>
+  <option value="Thailand">Thailand</option>
+  <option value="Vietnam">Vietnam</option>
+</select>
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label className="text-sm">Location</label>
@@ -67,7 +81,13 @@ const AddSpot = () => {
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Seasonality</label>
-					<input  name="seasonality" type="text" placeholder="Enter Seasonality" className="w-full p-2 rounded-md   border " />
+					<select name="seasonality" id="cars" className="w-full p-2 rounded-md   border ">
+  <option value="Summer">Summer</option>
+  <option value="Monsoon">Monsoon</option>
+  <option value="Spring">Spring</option>
+  <option value="Winter">Winter</option>
+  
+</select>
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Short Description</label>
