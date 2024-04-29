@@ -11,7 +11,7 @@ const MyList = () => {
     
     const [newSpots, setNewSpots] = useState([])
     useEffect(()=>{
-        fetch(`http://localhost:5000/spots/myList/${user?.email}`)
+        fetch(`https://travelia-server-ten.vercel.app/spots/myList/${user?.email}`)
         .then(res=> res.json())
         .then(data => {
             setNewSpots(data)   

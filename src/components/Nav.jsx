@@ -60,7 +60,7 @@ const Nav = () => {
     <a className=" cursor-default text-4xl logo font-semibold hover:text-orange-400 group text-orange-700 duration-500">Travel<span className="text-orange-400 text-4xl  group-hover:text-orange-700 duration-500">i</span>a</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="flex gap-9 px-1 fontse">
+    <ul className="flex gap-9 px-1 font-semibold">
       {
         navigation
       }

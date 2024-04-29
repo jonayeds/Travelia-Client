@@ -80,7 +80,7 @@ const Login = () => {
 		</button>
 		<button onClick={handleGithubLogin}  type="button" className="flex group items-center justify-center w-full p-4 space-x-4 border-[1px] border-solid border-gray-500  rounded-md  ">
         <FaGithub className="text-orange-700 group-hover:text-orange-500 duration-300 text-2xl"/>
-			<p>Login with Google</p>
+			<p>Login with Github</p>
 		</button>
 		
 	</div>

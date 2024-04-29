@@ -38,7 +38,7 @@ import Error from "../pages/Error";
             element:<PrivateRoute>
               <AllSpots></AllSpots>
             </PrivateRoute>,
-            loader: ()=> fetch("http://localhost:5000/spots")
+            loader: ()=> fetch("https://travelia-server-ten.vercel.app/spots")
         },
         {
             path: '/myList',
@@ -58,21 +58,21 @@ import Error from "../pages/Error";
             element:<PrivateRoute>
               <Update></Update>
             </PrivateRoute>,
-            loader: ({params})=> fetch(`http://localhost:5000/spots/update/${params.id}`)
+            loader: ({params})=> fetch(`https://travelia-server-ten.vercel.app/spots/update/${params.id}`)
         },
         {
             path: '/details/:id',
             element:<PrivateRoute>
               <SpotDetails></SpotDetails>
             </PrivateRoute>,
-            loader: ({params})=> fetch(`http://localhost:5000/spots/update/${params.id}`)
+            loader: ({params})=> fetch(`https://travelia-server-ten.vercel.app/spots/update/${params.id}`)
         },
         {
             path: '/country/:country',
             element:<PrivateRoute>
               <CountrySpots></CountrySpots>
             </PrivateRoute>,
-            loader: ({params})=> fetch(`http://localhost:5000/countries/${params.country}`)
+            loader: ({params})=> fetch(`https://travelia-server-ten.vercel.app/countries/${params.country}`)
         }
       ]
     },
