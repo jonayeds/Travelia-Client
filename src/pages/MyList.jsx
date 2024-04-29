@@ -32,7 +32,7 @@ const MyList = () => {
         })
         .then((result)=>{
             if(result.isConfirmed){
-                fetch(`https://travelia-server-dh6ac09qh-sajjads-projects-6be26fc1.vercel.app/spots/${id}`, {
+                fetch(`https://travelia-server-ten.vercel.app/spots/${id}`, {
         method: 'DELETE'
         })
         .then(res=> res.json())

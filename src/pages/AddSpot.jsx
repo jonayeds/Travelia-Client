@@ -21,7 +21,7 @@ const AddSpot = () => {
         const visitors = form.visitors.value
         const newSpot = {name, countryName, location, cost, seasonality, details, photo, time, visitors, email, displayName}
         console.log(newSpot)
-        fetch('https://travelia-server-dh6ac09qh-sajjads-projects-6be26fc1.vercel.app/spots', {
+        fetch('https://travelia-server-ten.vercel.app/spots', {
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'
