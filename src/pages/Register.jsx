@@ -61,7 +61,7 @@ const Register = () => {
 
 	}
     return (
-        <div className="w-1/3 mx-auto pt-32">
+        <div className="w-1/2 lg:w-1/3 mx-auto pt-32">
             <form onSubmit={handleRegister} className="space-y-8">
                 <div>
                     <h1 className="text-center text-3xl text-orange-700 font-semibold">Register</h1>
@@ -73,7 +73,7 @@ const Register = () => {
 			</div>
 			<div className="space-y-2">
 				<label htmlFor="email" className="block text-sm">Email address</label>
-				<input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-3 py-2 border rounded-md  outline-none  text-gray-600 bg-gray-200  " />
+				<input required type="email" name="email" id="email" placeholder="Your Email" className="w-full px-3 py-2 border rounded-md  outline-none  text-gray-600 bg-gray-200  " />
 			</div>
 			<div className="space-y-2">
 				<label htmlFor="photo" className="block text-sm">Photo</label>
@@ -85,7 +85,7 @@ const Register = () => {
 				</div>
 				<div className="flex items-center">
 				<input type={show?'text': 'password'} name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md  outline-none  text-gray-600 bg-gray-200  " />
-				<div onClick={handleShow} className="text-xl absolute right-[300px] text-gray-700">
+				<div onClick={handleShow} className="text-xl relative right-[30px] text-gray-700 w-0">
 					{
 						show? <FaEye />: <FaRegEyeSlash />
 					}

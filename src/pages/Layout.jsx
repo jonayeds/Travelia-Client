@@ -7,7 +7,7 @@ const Layout = () => {
     return (
         <div>
            <div className="h-[68px] lg:h-0">
-           <div className="backdrop-blur-2xl bg-black lg:bg-opacity-15 bg-opacity-50 fixed  h-[68px]   z-50 w-full">  
+           <div className="backdrop-blur-2xl bg-black lg:bg-opacity-15 bg-opacity-50 fixed     z-50 w-full">  
             <Nav></Nav>
             </div>
            </div>

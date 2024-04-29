@@ -4,9 +4,16 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import useAuth from "../customHooks/useAuth";
 import Swal from "sweetalert2";
+import { FaEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa6";
+import { useState } from "react";
 const Login = () => {
 	const {passwordLogin, googleLogin, githubLogin } = useAuth()
 	const navigate = useNavigate()
+	const [show, setShow] = useState(false)
+	const handleShow = ()=>{
+		setShow(!show)
+	}
 	// password Login
 	const handlePasswordLogin = (e)=>{
 		e.preventDefault()
@@ -100,7 +107,14 @@ const Login = () => {
 					<label htmlFor="password" className="text-sm">Password</label>
 					<a rel="noopener noreferrer" href="#" className="text-xs hover:underline ">Forgot password?</a>
 				</div>
+				<div className="flex items-center">
 				<input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md  outline-none  text-gray-600 bg-gray-200  " />
+				<div onClick={handleShow} className="text-xl relative right-[30px] text-gray-700 w-0">
+					{
+						show? <FaEye />: <FaRegEyeSlash />
+					}
+				</div>
+				</div>
 			</div>
 		</div>
 		<button type="submit" className="rounded w-full overflow-hidden relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2 active:border-orange-600 active:shadow-none shadow-lg bg-gradient-to-tr from-orange-300 to-orange-400 border-orange-700 text-orange-50 hover:text-orange-700 duration-500">

@@ -27,6 +27,10 @@ const Nav = () => {
         <NavLink className={({isActive})=> isActive? 'text-orange-600 hover:scale-125 duration-200 ': 'hover:scale-125 duration-200'}  to={'/allSpots'}><li><a>All Tourists Spots</a></li></NavLink>
         <NavLink className={({isActive})=> isActive? 'text-orange-600 hover:scale-125 duration-200 ': 'hover:scale-125 duration-200'} to={'/myList'}><li><a>My List</a></li></NavLink>
         <NavLink className={({isActive})=> isActive? 'text-orange-600 hover:scale-125 duration-200 ': 'hover:scale-125 duration-200'} to={'/addSpot'}><li><a>Add Tourist Spot</a></li></NavLink>
+        {user? <Link onClick={handleLogOut} className="rounded  md:hidden relative  group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2  active:shadow-none shadow-xl  bg-gradient-to-tr from-orange-300 to-orange-200  border-orange-700  text-orange-700 overflow-hidden">
+        <span className="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full  group-hover:w-full group-hover:h-full opacity-30"></span>
+        <span className="relative">Log Out</span>
+        </Link>:  <Link to={'/login'} className="font-semibold hover:text-orange-500 duration-300 md:hidden">Login</Link>}
       
     </> 
     const [theme, setTheme] = useState('light')
@@ -92,12 +96,12 @@ const Nav = () => {
 <img src={user.photoURL} alt="" className="w-12 h-12 rounded-full border-green-500 border-[3px] border-solid" />
 </a>
 
-          <Link onClick={handleLogOut} className="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2  active:shadow-none shadow-xl  bg-gradient-to-tr from-orange-300 to-orange-200  border-orange-700  text-orange-700 overflow-hidden">
+          <Link onClick={handleLogOut} className="rounded hidden md:flex relative  group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2  active:shadow-none shadow-xl  bg-gradient-to-tr from-orange-300 to-orange-200  border-orange-700  text-orange-700 overflow-hidden">
         <span className="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-32 group-hover:h-32 opacity-30"></span>
         <span className="relative">Log Out</span>
         </Link>
-        </div> : <div>
-            <Link to={'/login'} className="font-semibold hover:text-orange-500 duration-300">Login</Link>
+        </div> : <div className="flex items-center">
+            <Link to={'/login'} className="font-semibold hover:text-orange-500 duration-300 hidden md:flex ">Login</Link>
         <Link to={'/register'} className="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2  active:shadow-none shadow-xl  bg-gradient-to-tr from-orange-300 to-orange-200  border-orange-700  text-orange-700 overflow-hidden">
 <span className="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-32 group-hover:h-32 opacity-30"></span>
 <span className="relative">Register</span>
