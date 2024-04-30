@@ -7,7 +7,7 @@ const Countries = () => {
         fetch('https://travelia-server-ten.vercel.app/countries')
         .then(res=> res.json())
         .then(data=>{
-            console.log(data)
+            // console.log(data)
             setCountries(data)
         })
     }, [])

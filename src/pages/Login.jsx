@@ -108,7 +108,7 @@ const Login = () => {
 					<a rel="noopener noreferrer" href="#" className="text-xs hover:underline ">Forgot password?</a>
 				</div>
 				<div className="flex items-center">
-				<input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md  outline-none  text-gray-600 bg-gray-200  " />
+				<input type={show?'text': 'password'} name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md  outline-none  text-gray-600 bg-gray-200  " />
 				<div onClick={handleShow} className="text-xl relative right-[30px] text-gray-700 w-0">
 					{
 						show? <FaEye />: <FaRegEyeSlash />

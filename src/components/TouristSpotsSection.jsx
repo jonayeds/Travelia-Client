@@ -8,7 +8,7 @@ const TouristSpotsSection = () => {
     .then(res=> res.json())
     .then(data=>setspots(data))
 }, [])
-console.log(spots)
+// console.log(spots)
     return (
         <div className="mt-32 ">
             <div>

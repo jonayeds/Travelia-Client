@@ -16,7 +16,7 @@ const Sponsors = () => {
         
     ]
 
-    console.log(realtors);
+    // console.log(realtors);/
     return (
       <div className="my-20 ">
           <h1 className="heading text-6xl text-center my-4">Our Sponsors</h1>
