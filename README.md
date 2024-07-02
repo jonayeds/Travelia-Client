@@ -1,7 +1,7 @@
 
 # Travelia
+[Live Demo](https://travelia-3186e.web.app/)
 
-https://travelia-3186e.web.app/
 
 
 ## Key features and characteristics
@@ -20,6 +20,19 @@ https://travelia-3186e.web.app/
 
 - React-simple-typewriter
 - React-tooltip
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/jonayeds/Travelia-Client.git
+
+2. Install dependencies:
+
+   ```bash
+   cd Travelia-Client
+   npm install
 
 
 
